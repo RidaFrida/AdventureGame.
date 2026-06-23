@@ -14,13 +14,19 @@ const keyItem = {
     y: 360,
     collected: false
 };
-
+const cakeItem = {
+    x: 320,
+    y: 340,
+    collected: true
+};
 function resetItems() {
     crystals.forEach(item => item.collected = false);
     ingredients.forEach(item => item.collected = false);
     keyItem.collected = false;
 }
-
+cakeItem.collected = true;
+cakeItem.x = 320;
+cakeItem.y = 340;
 function drawCrystals() {
     crystals.forEach(crystal => {
         if (!crystal.collected) {
@@ -61,4 +67,18 @@ function drawKey() {
     ctx.fillRect(keyItem.x + 8, keyItem.y - 3, 22, 6);
     ctx.fillRect(keyItem.x + 25, keyItem.y - 3, 4, 12);
     ctx.fillRect(keyItem.x + 16, keyItem.y - 3, 4, 9);
+}
+function drawCake() {
+    if (cakeItem.collected) return;
+
+    ctx.fillStyle = "#ff8fab";
+    ctx.fillRect(cakeItem.x - 12, cakeItem.y - 8, 24, 16);
+
+    ctx.fillStyle = "#fff0f3";
+    ctx.fillRect(cakeItem.x - 12, cakeItem.y - 12, 24, 6);
+
+    ctx.fillStyle = "#d00000";
+    ctx.beginPath();
+    ctx.arc(cakeItem.x, cakeItem.y - 15, 4, 0, Math.PI * 2);
+    ctx.fill();
 }
