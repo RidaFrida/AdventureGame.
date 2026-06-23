@@ -546,5 +546,49 @@ document.getElementById("attack").addEventListener("touchstart", () => attackMon
 document.getElementById("action").addEventListener("touchstart", () => handleAction());
 document.getElementById("cake").addEventListener("touchstart", () => eatCake());
 document.getElementById("jake").addEventListener("touchstart", () => summonJake());
+function bindButton(id, key) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
+
+    btn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keys[key] = true;
+    });
+
+    btn.addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keys[key] = false;
+    });
+
+    btn.addEventListener("mousedown", () => {
+        keys[key] = true;
+    });
+
+    btn.addEventListener("mouseup", () => {
+        keys[key] = false;
+    });
+}
+
+bindButton("up", "ArrowUp");
+bindButton("down", "ArrowDown");
+bindButton("left", "ArrowLeft");
+bindButton("right", "ArrowRight");
+
+const attackButton = document.getElementById("attack");
+if (attackButton) {
+    attackButton.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        attackMonster();
+    });
+}
+
+const jakeButton = document.getElementById("jake");
+if (jakeButton) {
+    jakeButton.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        summonJake();
+    });
+}
+
 restartGame();
 gameLoop();
