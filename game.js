@@ -514,6 +514,37 @@ function gameLoop() {
     draw();
     requestAnimationFrame(gameLoop);
 }
+function bindButton(id, key) {
+    const btn = document.getElementById(id);
+    if (!btn) return;
 
+    btn.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        keys[key] = true;
+    });
+
+    btn.addEventListener("touchend", (e) => {
+        e.preventDefault();
+        keys[key] = false;
+    });
+
+    btn.addEventListener("mousedown", () => {
+        keys[key] = true;
+    });
+
+    btn.addEventListener("mouseup", () => {
+        keys[key] = false;
+    });
+}
+
+bindButton("up", "ArrowUp");
+bindButton("down", "ArrowDown");
+bindButton("left", "ArrowLeft");
+bindButton("right", "ArrowRight");
+
+document.getElementById("attack").addEventListener("touchstart", () => attackMonster());
+document.getElementById("action").addEventListener("touchstart", () => handleAction());
+document.getElementById("cake").addEventListener("touchstart", () => eatCake());
+document.getElementById("jake").addEventListener("touchstart", () => summonJake());
 restartGame();
 gameLoop();
