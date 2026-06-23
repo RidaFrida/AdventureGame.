@@ -241,7 +241,19 @@ function update() {
     }
 
     collectItems();
-
+// Повар сам готовит торт, если пройти рядом с ним
+if (
+    ingredientScore === 3 &&
+    !cakeReady &&
+    !cakeEaten &&
+    distanceBetween(hero, npc) < 80
+) {
+    cakeReady = true;
+    cakeItem.collected = false;
+    cakeItem.x = npc.x + 60;
+    cakeItem.y = npc.y + 65;
+    playSound(sounds.cakeReady);
+}
     if (
         monster.alive &&
         isTouching(hero, monster) &&
