@@ -1,0 +1,19 @@
+body{
+    margin:0;
+    background:#87ceeb;
+    font-family:Arial,sans-serif;
+    text-align:center;
+}
+
+h1{
+    color:white;
+    margin:15px;
+    text-shadow:2px 2px 5px black;
+}
+
+canvas{
+    background:#8fd3ff;
+    border:5px solid #333;
+    border-radius:12px;
+    box-shadow:0 0 20px rgba(0,0,0,.4);
+}
