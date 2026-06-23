@@ -447,7 +447,7 @@ function drawText() {
     ctx.fillText("Жизни: " + hearts, 20, 95);
 
     ctx.fillText("E — говорить", 20, 125);
-    ctx.fillText("C — съесть торт", 20, 155);
+   ctx.fillText("Торт съедается автоматически", 20, 155);;
     ctx.fillText("Пробел — удар", 20, 185);
     ctx.fillText("Q — позвать Джейка", 20, 215);
     ctx.fillText("R — заново", 20, 245);
