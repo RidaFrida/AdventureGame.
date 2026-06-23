@@ -496,6 +496,7 @@ function draw() {
     drawCrystals();
     drawIngredients();
     drawKey();
+    drawCake();
     drawNpc();
 
     if (!portalEnding) {
