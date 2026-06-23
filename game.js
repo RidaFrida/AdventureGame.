@@ -279,6 +279,7 @@ if (
 }
 
 function collectItems() {
+    // Подбор кристаллов
     crystals.forEach(crystal => {
         if (!crystal.collected) {
             let fakeCrystal = {
@@ -296,71 +297,7 @@ function collectItems() {
         }
     });
 
-    ingredients.forEach(item => {
-        if (!item.collected) {
-            let fakeItem = {
-                x: item.x - 10,
-                y: item.y - 10,
-                width: 20,
-                height: 20
-            };
-
-            if (isTouching(hero, fakeItem)) {
-                item.collected = true;
-                ingredientScore++;
-                playSound(sounds.ingredient);
-            }
-        }
-    });
-
-    if (!keyItem.collected) {
-        let dx = hero.x - keyItem.x;
-        let dy = hero.y - keyItem.y;
-        let distance = Math.sqrt(dx * dx + dy * dy);
-
-        if (distance < 45) {
-            keyItem.collected = true;
-            playSound(sounds.crystal);
-        }
-    }
-}
-
-    if (portal.opened && isTouching(hero, portal)) {
-        enteringPortal = true;
-        showDialog = false;
-    }
-if (!keyItem.collected) {
-    let fakeKey = {
-        x: keyItem.x - 10,
-        y: keyItem.y - 10,
-        width: 40,
-        height: 20
-    };
-
-    if (isTouching(hero, fakeKey)) {
-        keyItem.collected = true;
-        playSound(sounds.crystal);
-    }
-}
-
-function collectItems() {
-    crystals.forEach(crystal => {
-        if (!crystal.collected) {
-            let fakeCrystal = {
-                x: crystal.x - 10,
-                y: crystal.y - 10,
-                width: 20,
-                height: 20
-            };
-
-            if (isTouching(hero, fakeCrystal)) {
-                crystal.collected = true;
-                score++;
-                playSound(sounds.crystal);
-            }
-        }
-    });
-
+    // Подбор ингредиентов
     ingredients.forEach(item => {
         if (!item.collected) {
             let fakeItem = {
@@ -390,6 +327,24 @@ function collectItems() {
         if (isTouching(hero, fakeKey)) {
             keyItem.collected = true;
             playSound(sounds.crystal);
+        }
+    }
+
+    // Подбор торта
+    if (cakeReady && !cakeEaten && !cakeItem.collected) {
+        let fakeCake = {
+            x: cakeItem.x - 18,
+            y: cakeItem.y - 18,
+            width: 36,
+            height: 36
+        };
+
+        if (isTouching(hero, fakeCake)) {
+            cakeItem.collected = true;
+            cakeReady = false;
+            cakeEaten = true;
+            hero.immortalTimer = 1200;
+            playSound(sounds.cakeReady);
         }
     }
 }
