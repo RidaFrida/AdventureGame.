@@ -17,3 +17,14 @@ canvas{
     border-radius:12px;
     box-shadow:0 0 20px rgba(0,0,0,.4);
 }
+#mobile-controls {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#mobile-controls button {
+    font-size: 28px;
+    padding: 14px 20px;
+    margin: 4px;
+    border-radius: 12px;
+}
